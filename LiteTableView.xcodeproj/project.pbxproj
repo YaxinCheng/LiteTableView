@@ -8,12 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		14CC56E6217BC0ED0015540A /* LiteTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 14CC56E4217BC0ED0015540A /* LiteTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		14CC56ED217BC1000015540A /* LiteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CC56EC217BC1000015540A /* LiteTableView.swift */; };
+		14CC56EF217BC1070015540A /* LiteTableProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CC56EE217BC1060015540A /* LiteTableProtocols.swift */; };
+		14CC56F3217BC1140015540A /* LiteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CC56F0217BC1130015540A /* LiteTableCell.swift */; };
+		14CC56F4217BC1140015540A /* DequeIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CC56F1217BC1140015540A /* DequeIterator.swift */; };
+		14CC56F5217BC1140015540A /* Deque.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CC56F2217BC1140015540A /* Deque.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		14CC56E1217BC0ED0015540A /* LiteTableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LiteTableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14CC56E4217BC0ED0015540A /* LiteTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiteTableView.h; sourceTree = "<group>"; };
 		14CC56E5217BC0ED0015540A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14CC56EC217BC1000015540A /* LiteTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiteTableView.swift; sourceTree = "<group>"; };
+		14CC56EE217BC1060015540A /* LiteTableProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiteTableProtocols.swift; sourceTree = "<group>"; };
+		14CC56F0217BC1130015540A /* LiteTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiteTableCell.swift; sourceTree = "<group>"; };
+		14CC56F1217BC1140015540A /* DequeIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DequeIterator.swift; sourceTree = "<group>"; };
+		14CC56F2217BC1140015540A /* Deque.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deque.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,9 +57,22 @@
 			isa = PBXGroup;
 			children = (
 				14CC56E4217BC0ED0015540A /* LiteTableView.h */,
+				14CC56EE217BC1060015540A /* LiteTableProtocols.swift */,
+				14CC56EC217BC1000015540A /* LiteTableView.swift */,
+				14CC56F0217BC1130015540A /* LiteTableCell.swift */,
+				14CC56F6217BC1190015540A /* Deque */,
 				14CC56E5217BC0ED0015540A /* Info.plist */,
 			);
 			path = LiteTableView;
+			sourceTree = "<group>";
+		};
+		14CC56F6217BC1190015540A /* Deque */ = {
+			isa = PBXGroup;
+			children = (
+				14CC56F2217BC1140015540A /* Deque.swift */,
+				14CC56F1217BC1140015540A /* DequeIterator.swift */,
+			);
+			path = Deque;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +118,7 @@
 				TargetAttributes = {
 					14CC56E0217BC0ED0015540A = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -130,6 +154,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14CC56F4217BC1140015540A /* DequeIterator.swift in Sources */,
+				14CC56F3217BC1140015540A /* LiteTableCell.swift in Sources */,
+				14CC56EF217BC1070015540A /* LiteTableProtocols.swift in Sources */,
+				14CC56F5217BC1140015540A /* Deque.swift in Sources */,
+				14CC56ED217BC1000015540A /* LiteTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +217,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -246,7 +275,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -260,6 +289,7 @@
 		14CC56EA217BC0ED0015540A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -279,6 +309,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ycheng.LiteTableView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -286,6 +317,7 @@
 		14CC56EB217BC0ED0015540A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
