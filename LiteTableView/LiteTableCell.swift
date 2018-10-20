@@ -8,13 +8,22 @@
 
 import Cocoa
 
+/**
+ The superclass for all cells loaded in the LiteTableView
+*/
 open class LiteTableCell: NSCollectionViewItem {
   
   deinit {
     view.removeFromSuperview()
   }
   
-  private(set) var highlighted: Bool = false
+  /**
+   A bool value indicates if the cell is highlighted
+  */
+  open private(set) var highlighted: Bool = false
+  /**
+   The colour for a highlighted cell
+  */
   open var highlightedColour: NSColor {
     if #available(OSX 10.14, *) {
       return .controlAccentColor
@@ -23,6 +32,9 @@ open class LiteTableCell: NSCollectionViewItem {
     }
   }
   
+  /**
+   Switch the highlight state of cell
+  */
   open func highlightToggle() {
     highlighted = !highlighted
     let colour: NSColor = highlighted ? highlightedColour : .clear

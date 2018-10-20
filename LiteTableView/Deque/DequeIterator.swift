@@ -8,11 +8,25 @@
 
 import Foundation
 
+/**
+ A deque iterator begins at a certain node, and can move forward and backword
+ */
 struct DequeIterator<T>: IteratorProtocol {
   typealias Element = T
+  /**
+   The current node where the iterator is at
+  */
   private var current: Deque<T>.Node<T>?
+  /**
+   Indicates if the the deque is at the first node
+  */
   private var firstNode: Bool
   
+  /**
+   Constructor
+   
+   - parameter beginNode: the node where the iterator should begin iterating
+  */
   init(beginNode: Deque<T>.Node<T>?) {
     current = beginNode
     firstNode = true
@@ -29,6 +43,9 @@ struct DequeIterator<T>: IteratorProtocol {
     }
   }
   
+  /**
+   Retreats to the previous element and returns it, or nil if no next element exists.
+  */
   mutating func previous() -> T? {
     if firstNode { return nil }
     guard current?.prev != nil else {
@@ -39,6 +56,9 @@ struct DequeIterator<T>: IteratorProtocol {
     return current?.content
   }
   
+  /**
+   Get the content from the current node
+  */
   var content: T? {
     return current?.content
   }
