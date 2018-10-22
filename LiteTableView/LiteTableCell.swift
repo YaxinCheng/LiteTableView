@@ -35,7 +35,7 @@ open class LiteTableCell: NSCollectionViewItem {
   /**
    Switch the highlight state of cell
   */
-  open func highlightToggle() {
+  func highlightToggle() {
     highlighted = !highlighted
     let colour: NSColor = highlighted ? highlightedColour : .clear
     view.layer?.backgroundColor = colour.cgColor
