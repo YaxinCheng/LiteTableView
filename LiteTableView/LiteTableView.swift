@@ -193,11 +193,11 @@ open class LiteTableView: NSStackView {
       resetCurrFlag = false
     }
     if event.keyCode == 125 {
+      liteDelegate?.keyPressed?(event)
       moveDown()
-      liteDelegate?.keyPressed?(event)
     } else if event.keyCode == 126 {
-      moveUp()
       liteDelegate?.keyPressed?(event)
+      moveUp()
     } else if allowedKeyCodes.contains(event.keyCode) {
       liteDelegate?.keyPressed?(event)
     } else {
