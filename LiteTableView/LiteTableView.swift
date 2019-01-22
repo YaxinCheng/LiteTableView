@@ -292,6 +292,7 @@ open class LiteTableView: NSStackView {
       else { return }
       currentIndex -= 1
       displayDeque.appendFirst(newCell)
+      currentCell.beforeFirstNode = false
       _ = currentCell.previous() // Move cursor
       insertView(newCell.view, at: 0, in: .top) // Add view to the top
       highlightedCell = newCell

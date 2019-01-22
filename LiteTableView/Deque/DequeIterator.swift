@@ -20,7 +20,7 @@ struct DequeIterator<T>: IteratorProtocol {
   /**
    Indicates if the the deque is at the first node
   */
-  private var firstNode: Bool
+  var beforeFirstNode: Bool
   
   /**
    Constructor
@@ -29,12 +29,12 @@ struct DequeIterator<T>: IteratorProtocol {
   */
   init(beginNode: Deque<T>.Node<T>?) {
     current = beginNode
-    firstNode = true
+    beforeFirstNode = true
   }
   
   mutating func next() -> T? {
-    if firstNode {
-      firstNode = false
+    if beforeFirstNode {
+      beforeFirstNode = false
       return current?.content
     } else {
       guard current?.next != nil else { return nil }
@@ -47,9 +47,9 @@ struct DequeIterator<T>: IteratorProtocol {
    Retreats to the previous element and returns it, or nil if no next element exists.
   */
   mutating func previous() -> T? {
-    if firstNode { return nil }
+    if beforeFirstNode { return nil }
     guard current?.prev != nil else {
-      firstNode = true
+      beforeFirstNode = true
       return nil
     }
     current = current?.prev
