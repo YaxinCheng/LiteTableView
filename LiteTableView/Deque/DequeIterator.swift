@@ -17,10 +17,14 @@ struct DequeIterator<T>: IteratorProtocol {
    The current node where the iterator is at
   */
   private var current: Deque<T>.Node<T>?
+  /// First node of the deque
+  ///
+  /// Used to compare if the current node is at the top
+  private let firstNode: Deque<T>.Node<T>?
   /**
    Indicates if the the deque is at the first node
   */
-  var beforeFirstNode: Bool
+  private var beforeFirstNode: Bool
   
   /**
    Constructor
@@ -29,6 +33,7 @@ struct DequeIterator<T>: IteratorProtocol {
   */
   init(beginNode: Deque<T>.Node<T>?) {
     current = beginNode
+    firstNode = beginNode
     beforeFirstNode = true
   }
   
@@ -48,10 +53,11 @@ struct DequeIterator<T>: IteratorProtocol {
   */
   mutating func previous() -> T? {
     if beforeFirstNode { return nil }
-    guard current?.prev != nil else {
+    guard current !== firstNode else {
       beforeFirstNode = true
       return nil
     }
+    if current?.prev == nil { return nil }
     current = current?.prev
     return current?.content
   }

@@ -171,6 +171,7 @@ struct Deque<T> {
   private mutating func removeFirstAsync() -> T? {
     guard head != nil else { return nil }
     let next = head?.next
+    next?.prev = nil
     head?.next = nil
     let value = head?.content
     head = next
