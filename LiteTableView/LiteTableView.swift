@@ -197,10 +197,10 @@ open class LiteTableView: NSStackView {
     }
     switch (event.keyCode, event.modifierFlags.contains(.command)) {
     case (125, false): moveDown()
-    case (125, true): scroll(to: (liteDataSource?.numberOfCells(self) ?? (currentIndex + 1)) - 1)
+    case (125, true):  scroll(to: (liteDataSource?.numberOfCells(self) ?? (currentIndex + 1)) - 1)
     case (126, false): moveUp()
-    case (126, true): scroll(to: 0)
-    default: super.keyDown(with: event)
+    case (126, true):  scroll(to: 0)
+    default: break
     }
   }
   
