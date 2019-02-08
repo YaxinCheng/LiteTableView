@@ -192,16 +192,15 @@ open class LiteTableView: NSStackView {
       currentCell = displayDeque.makeIterator()
       resetCurrFlag = false
     }
-    if event.keyCode == 125 {
+    if allowedKeyCodes.contains(event.keyCode) {
       liteDelegate?.keyPressed?(event)
-      moveDown()
-    } else if event.keyCode == 126 {
-      liteDelegate?.keyPressed?(event)
-      moveUp()
-    } else if allowedKeyCodes.contains(event.keyCode) {
-      liteDelegate?.keyPressed?(event)
-    } else {
-      super.keyUp(with: event)
+    }
+    switch (event.keyCode, event.modifierFlags.contains(.command)) {
+    case (125, false): moveDown()
+    case (125, true): scroll(to: (liteDataSource?.numberOfCells(self) ?? (currentIndex + 1)) - 1)
+    case (126, false): moveUp()
+    case (126, true): scroll(to: 0)
+    default: super.keyDown(with: event)
     }
   }
   
@@ -298,6 +297,15 @@ open class LiteTableView: NSStackView {
       liteDelegate?.viewDidScroll?(self)// Callback
     } else {// If the view is above the top
       reset() // Reset
+    }
+  }
+  
+  open func scroll(to index: Int) {
+    if index == -1 { return reload() }
+    let diff = index - currentIndex
+    let scrollFunction: ()->() = diff > 0 ? moveDown : moveUp
+    for _ in 0 ..< abs(diff) {
+      scrollFunction()
     }
   }
 }
