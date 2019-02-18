@@ -156,13 +156,16 @@ open class LiteTableView: NSStackView {
       subviews.removeAll()
     }
     reset()
-    let threshold = liteDataSource?.cellReuseThreshold(self) ?? 0
-    let itemCount = liteDataSource?.numberOfCells(self) ?? 0
-    let displayCount = min(threshold, itemCount)
-    for index in 0 ..< displayCount {
+    var index = 0
+    var threshold = liteDataSource?.cellReuseThreshold(self) ?? 0
+    var itemCount = liteDataSource?.numberOfCells(self) ?? 0
+    while index < min(threshold, itemCount) {
       guard let cell = liteDataSource?.prepareCell(self, at: index) else { break }
       displayDeque.appendLast(cell)
       addView(cell.view, in: .top)
+      threshold = liteDataSource?.cellReuseThreshold(self) ?? 0
+      itemCount = liteDataSource?.numberOfCells(self) ?? 0
+      index += 1
     }
     resetCurrFlag = true// After adding all cells, make thie flag true to reload iterator later
   }
